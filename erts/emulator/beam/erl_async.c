@@ -173,15 +173,17 @@ int goofus_timer_sleep_msec = 500;
 void
 goofus_timer_loop(useconds_t usecs_to_sleep)
 {
-    int ix;
+    while(1) {
+        int ix;
 
-    usleep(usecs_to_sleep);
-    if (goofus_timer_enabled) {
-        for (ix = 0; ix <= erts_no_schedulers; ix++) {
-            ERTS_SCHEDULER_IX(ix)->goofus_count = 42;
+        usleep(usecs_to_sleep);
+        if (goofus_timer_enabled) {
+            for (ix = 0; ix <= erts_no_schedulers; ix++) {
+                ERTS_SCHEDULER_IX(ix)->goofus_count = 42;
+            }
         }
     }
-    goofus_timer_loop(goofus_timer_sleep_msec * 1000);
+    // goofus_timer_loop(goofus_timer_sleep_msec * 1000);
 }
 
 void
