@@ -1176,7 +1176,8 @@ int goofus_doit2(Process *c_p)
     return 1;
 }
 
-int goofus_doit(Process *c_p) NOINLINE
+extern int goofus_doit(Process *c_p) NOINLINE;
+int goofus_doit(Process *c_p)
 {
     int ret;
 
