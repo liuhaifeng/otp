@@ -4483,7 +4483,7 @@ BIF_RETTYPE system_flag_2(BIF_ALIST_2)
 
             ret = goofus_timer_enabled = (!goofus_timer_enabled);
         } else if (BIF_ARG_2 == am_print) {
-            for (ix = 0; ix <= erts_no_schedulers; ix++) {
+            for (ix = 0; ix < erts_no_schedulers; ix++) {
                 ERTS_SCHEDULER_IX(ix)->goofus_count = 42;
             }
             ret = 1;

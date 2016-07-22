@@ -178,7 +178,7 @@ goofus_timer_loop(useconds_t usecs_to_sleep)
 
         usleep(usecs_to_sleep);
         if (goofus_timer_enabled) {
-            for (ix = 0; ix <= erts_no_schedulers; ix++) {
+            for (ix = 0; ix < erts_no_schedulers; ix++) {
                 ERTS_SCHEDULER_IX(ix)->goofus_count = 42;
             }
         }
